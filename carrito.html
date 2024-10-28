@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Tienda Robótica</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="carrito">
+        <h2>Tu Carrito</h2>
+        <table id="carrito-table">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="carrito-body">
+                <!-- Los productos añadidos aparecerán aquí -->
+            </tbody>
+        </table>
+        <div class="total">
+            <h3>Total: $<span id="total-carrito">0</span></h3>
+            <button id="checkout">Proceder al Pago</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 THEION4 Robótica - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

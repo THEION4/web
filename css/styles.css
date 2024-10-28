@@ -1,0 +1,232 @@
+/* Resetear los márgenes y el padding por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav h1 {
+    font-size: 24px;
+    font-weight: bold;
+    justify-content: center;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+div.h2{
+    
+
+    justify-content: center; 
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg, #4a90e2, #6a5acd, #8a2be2, #7b68ee, #483d8b, #6b5b95, #4a90e2);
+    background-color: #333;
+    background-size: 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: h2 3s linear infinite;
+}
+@keyframes h2 {
+
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sección de productos */
+.productos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.producto {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 250px;
+}
+
+.producto img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.producto h3 {
+    margin-bottom: 10px;
+}
+
+.producto p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Estilo del botón de añadir al carrito */
+button.add-to-cart {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.add-to-cart:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button.add-to-cart:active {
+    transform: scale(1);
+}
+
+/* Efecto hover en los productos */
+.producto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección del carrito */
+.carrito {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.carrito table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.carrito table thead th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+}
+
+.carrito table tbody td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilo de los selectores de cantidad */
+input.quantity {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+}
+
+input.quantity:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilo del botón de eliminar */
+button.remove-item {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.remove-item:hover {
+    background-color: #c82333;
+}
+
+/* Estilo del botón de pago */
+button#checkout {
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+
+button#checkout:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+button#checkout:active {
+    transform: scale(1);
+}
+
+/* Total del carrito */
+.total {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.total h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+}
+
