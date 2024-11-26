@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Compra</title>
+    <link rel="stylesheet" href="css/registro.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script>
+        // Inicializar EmailJS
+        (function() {
+            emailjs.init("kajeZ-19zAelrUQ6T"); // Reemplaza "YOUR_USER_ID" con tu ID de usuario de EmailJS
+        })();
+    </script>
+    
+</head>
+<body>
+    <header>
+        <h1>Registro de Compra</h1>
+    </header>
+    <form id="registro-form">
+        <!-- Información Personal -->
+        <h2>Información Personal</h2>
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+
+        <label for="direccion">Dirección de envío:</label>
+        <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" required>
+
+        <label for="codigo-postal">Código Postal:</label>
+        <input type="text" id="codigo-postal" name="codigo-postal"  placeholder="Ej: 12345" required>
+
+        <!-- Información de Pago -->
+        <h2>Información de Pago</h2>
+        <label for="numero-tarjeta">Número de Tarjeta:</label>
+        <input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19" required>
+        <img id="logo-tarjeta" alt="Logotipo de tarjeta">
+
+        <label for="fecha-vencimiento">Fecha de Vencimiento (MM/AA):</label>
+        <input type="text" id="fecha-vencimiento" name="fecha-vencimiento" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])/([0-9]{2})" required>
+
+        <label for="cvc">Código CVC:</label>
+        <input type="text" id="cvc" name="cvc" placeholder="123" maxlength="3"  required>
+
+        <button type="submit">Enviar</button>
+    </form>
+    <script>
+        document.getElementById('registro-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Capturar datos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const direccion = document.getElementById('direccion').value;
+            const codigoPostal = document.getElementById('codigo-postal').value;
+            const numeroTarjeta = document.getElementById('numero-tarjeta').value.replace(/\s+/g, '');
+            const fechaVencimiento = document.getElementById('fecha-vencimiento').value;
+
+            // Simular datos del carrito
+            const productos = [
+                { producto: "Arduino Uno", cantidad: 2, precioUnitario: 25.00, subtotal: 50.00 },
+                { producto: "Raspberry Pi", cantidad: 1, precioUnitario: 40.00, subtotal: 40.00 }
+            ];
+
+            const total = productos.reduce((sum, item) => sum + item.subtotal, 0);
+
+            // Crear mensaje para WhatsApp
+            const mensaje = `📦 Nueva Orden de Compra:\n\n` +
+                            `👤 *Nombre:* ${nombre}\n` +
+                            `✉️ *Correo:* ${correo}\n` +
+                            `🏠 *Dirección:* ${direccion}\n` +
+                            `📪 *Código Postal:* ${codigoPostal}\n\n` +
+                            `🛒 *Productos:*\n` +
+                            productos.map(
+                                item => `- ${item.producto} (${item.cantidad} unidades a $${item.precioUnitario} c/u) - Subtotal: $${item.subtotal.toFixed(2)}`
+                            ).join('\n') +
+                            `\n\n💳 *Tarjeta:* **** **** **** ${numeroTarjeta.slice(-4)}\n` +
+                            `📅 *Fecha de Vencimiento:* ${fechaVencimiento}\n\n` +
+                            `💰 *Total:* $${total.toFixed(2)}`;
+
+            // WhatsApp API
+            const numeroWhatsApp = "526741074647"; // Reemplaza con tu número
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+
+            // Enviar correo con EmailJS
+            const emailParams = {
+                nombre: nombre,
+                correo: correo,
+                direccion: direccion,
+                codigo_postal: codigoPostal,
+                tarjeta: `**** **** **** ${numeroTarjeta.slice(-4)}`,
+                fecha_vencimiento: fechaVencimiento
+            };
+
+            try {
+                await emailjs.send("service_4d4xgjn", "template_55joyea", emailParams);
+                alert("Correo enviado al comprador.");
+            } catch (error) {
+                alert("Hubo un error al enviar el correo.");
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>

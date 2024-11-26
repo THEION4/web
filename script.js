@@ -79,10 +79,7 @@ if (carritoBody) {
     actualizarCarrito();
 }
 
-// Simulación de proceso de pago
+// Redirigir a la página de registro de datos al proceder al pago
 document.getElementById('checkout')?.addEventListener('click', () => {
-    alert('Pago procesado con éxito. ¡Gracias por tu compra!');
-    carrito = [];
-    localStorage.removeItem('carrito');
-    actualizarCarrito();
+    window.location.href = "registro.html";
 });
